@@ -16,6 +16,12 @@ contract Token{
 
     function transfer(address to, uint amount) external {
         require(balances[msg.sender]>= amount,"Not enought Tokens");
+        balances[msg.sender] -= amount;
+        balances[to]+= amount;
+    }
+
+    function balanceof(address account) external view returns(uint256){
+        return balances[account];
     }
 
 }
